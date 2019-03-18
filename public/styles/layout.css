@@ -10,6 +10,9 @@ html {
   box-sizing: inherit;
 }
 
+html, body, .container {
+  height: 100%;
+}
 /*
  * Global layout stuff
  */
@@ -25,7 +28,8 @@ body {
   width: 450px;
   margin:0 auto;
   background-color: white;
-  margin-top: 140px;
+  padding-top: 140px;
+  box-sizing: border-box;
 }
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
