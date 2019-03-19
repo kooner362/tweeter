@@ -52,6 +52,20 @@
      }
    ];
 
+   $(".new-tweet form").on('submit', function(event){
+     event.preventDefault();
+     let data = $(this).serialize();
+     $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: data,
+      dataType: "text",
+      success: function(resultData){
+          console.log('Done!');
+      }
+      });
+    });
+
    function getDays (tweetDate) {
      let day = 86400000;
      let today = new Date().getTime();
