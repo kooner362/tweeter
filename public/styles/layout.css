@@ -30,6 +30,7 @@ body {
   background-color: white;
   padding-top: 140px;
   box-sizing: border-box;
+  overflow: scroll;
 }
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
