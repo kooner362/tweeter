@@ -23,7 +23,8 @@
 
    function getDays (tweetDate) {
      let day = 86400000;
-     let days = Math.floor(tweetDate / day);
+     let today = new Date().getTime();
+     let days = Math.floor((today - tweetDate) / day);
      return days;
    }
 
@@ -49,11 +50,4 @@
      return article;
    }
 
-   
-
-   var $tweet = createTweetElement(tweet);
-
-   // Test / driver code (temporary)
-   console.log($tweet); // to see what it looks like
-   $('.tweets').append($tweet);
  });
