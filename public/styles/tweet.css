@@ -35,7 +35,7 @@ article.tweet header p {
   line-height: 40px;
 }
 
-article.tweet > span {
+article.tweet > p {
   float: left;
   padding-left: 0.5em;
   margin-top: 1em;
