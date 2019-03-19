@@ -11,4 +11,3 @@ $(document).ready(function() {
     }
   });
 });
-//also add css for color of text and use jquery to add/remove the class
