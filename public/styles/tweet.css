@@ -1,0 +1,60 @@
+.tweets {
+
+}
+
+.tweet {
+  margin: 2em;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: #b6b8ba;
+  overflow: hidden;
+}
+
+.tweet header {
+  margin-bottom: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.tweet header img {
+  width: 30px;
+  margin-top: 15px;
+  margin-left: 10px;
+  float: left;
+}
+
+.tweet h2 {
+  float: left;
+  margin: 0 0 0 0.5em;
+  line-height: 50px;
+}
+
+.tweet p {
+  float: right;
+  margin: 0 .5em 0 0;
+  line-height: 50px;
+}
+
+.tweet span {
+  float: left;
+  padding-left: 0.5em;
+  margin-top: 1em;
+}
+
+.tweet footer {
+  width: 100%;
+  float: left;
+  border-top: 1px solid;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-top: 2.5em;
+}
+
+.age {
+  margin-top: 0;
+  margin: 0em 0em .5em 0em;
+  width: inherit;
+  padding-left: 0em;
+}
