@@ -6,6 +6,7 @@
 
  $(document).ready(function() {
    let slide = true;
+   $('#errors').hide();
    $("#compose").on('click', function() {
      let container = $('.new-tweet');
      container.slideToggle();
@@ -15,13 +16,16 @@
 
    $(".new-tweet form").on('submit', function(event){
      event.preventDefault();
+     $('#errors').hide();
      let data = $(this).serialize();
      let textarea = $(this).find('textarea');
      let message_len = textarea.val().length;
      if (message_len >= 140) {
        $('#errors').text('Your message is too long!');
-     } else if (message_len == 0) {
+       $('#errors').slideDown();
+     } else if (message_len === 0) {
        $('#errors').text('Your tweet is empty!');
+       $('#errors').slideDown();
      } else {
        $.ajax({
         type: "POST",
@@ -32,7 +36,6 @@
             renderTweets([JSON.parse(resultData)]);
             textarea.val('');
             $(textarea).siblings().find('.counter').text('140');
-            $('#errors').empty();
          }
        });
      }
