@@ -56,25 +56,25 @@
    }
 
    function createTweetElement (tweetData) {
-     let article = $("<article></article").addClass('tweet');
+     let $article = $("<article></article").addClass('tweet');
 
-     let header = $("<header></header");
-     header.append($(`<img src="${tweetData.user.avatars.small}">`));
-     header.append($(`<h2>${tweetData.user.name}</h2>`));
-     header.append($(`<p>${tweetData.user.handle}</p>`));
-     article.append(header);
-     let text = $("<p></p>").text(`${tweetData.content.text}`);
-     article.append(text);
+     let $header = $("<header></header");
+     $header.append($(`<img src="${tweetData.user.avatars.small}">`));
+     $header.append($(`<h2>${tweetData.user.name}</h2>`));
+     $header.append($(`<p>${tweetData.user.handle}</p>`));
+     $article.append($header);
+     let $text = $("<p></p>").text(`${tweetData.content.text}`);
+     $article.append($text);
 
-     let footer = $("<footer></footer>");
-     footer.append(`<span class="age">${getDays(tweetData.created_at)} days ago</span>`);
-     let footer_div = $("<div></div>");
-     footer_div.append('<i class="fas fa-flag"></i>');
-     footer_div.append('<i class="fas fa-retweet"></i>');
-     footer_div.append('<i class="fas fa-heart"></i>');
-     footer.append(footer_div);
-     article.append(footer);
-     return article;
+     let $footer = $("<footer></footer>");
+     $footer.append(`<span class="age">${getDays(tweetData.created_at)} days ago</span>`);
+     let $footer_div = $("<div></div>");
+     $footer_div.append('<i class="fas fa-flag"></i>');
+     $footer_div.append('<i class="fas fa-retweet"></i>');
+     $footer_div.append('<i class="fas fa-heart"></i>');
+     $footer.append($footer_div);
+     $article.append($footer);
+     return $article;
    }
 
    function renderTweets (tweetData) {
