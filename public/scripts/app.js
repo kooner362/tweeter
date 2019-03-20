@@ -45,15 +45,15 @@
    }
 
    function createTweetElement (tweetData) {
-     let article = $("<article class='tweet'></article");
+     let article = $("<article></article").addClass('tweet');
 
      let header = $("<header></header");
      header.append($(`<img src="${tweetData.user.avatars.small}">`));
      header.append($(`<h2>${tweetData.user.name}</h2>`));
      header.append($(`<p>${tweetData.user.handle}</p>`));
      article.append(header);
-
-     article.append(`<p>${tweetData.content.text}</p>`);
+     let text = $("<p></p>").text(`${tweetData.content.text}`);
+     article.append(text);
 
      let footer = $("<footer></footer>");
      footer.append(`<span class="age">${getDays(tweetData.created_at)} days ago</span>`);
