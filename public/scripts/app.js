@@ -9,15 +9,23 @@
    $(".new-tweet form").on('submit', function(event){
      event.preventDefault();
      let data = $(this).serialize();
-     $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: data,
-      dataType: "text",
-      success: function(resultData){
-          console.log('Done!');
-      }
-      });
+     let textarea = $(this).find('textarea');
+     let message_len = textarea[0].value.length;
+     if (message_len >= 140) {
+       alert('Your tweet is too long!');
+     } else if (message_len == 0) {
+       alert('Your tweet is empty!');
+     } else {
+       $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: data,
+        dataType: "text",
+        success: function(resultData){
+            console.log('Done!');
+        }
+        });
+     }
     });
 
    function loadTweets () {
