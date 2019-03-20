@@ -9,6 +9,7 @@
    $("#compose").on('click', function() {
      let container = $('.new-tweet');
      container.slideToggle();
+     $(".new-tweet form textarea").focus();
      return false;
     });
 
