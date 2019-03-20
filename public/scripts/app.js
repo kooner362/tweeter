@@ -19,9 +19,9 @@
      let textarea = $(this).find('textarea');
      let message_len = textarea.val().length;
      if (message_len >= 140) {
-       alert('Your tweet is too long!');
+       $('#errors').text('Your message is too long!');
      } else if (message_len == 0) {
-       alert('Your tweet is empty!');
+       $('#errors').text('Your tweet is empty!');
      } else {
        $.ajax({
         type: "POST",
@@ -32,6 +32,7 @@
             renderTweets([JSON.parse(resultData)]);
             textarea.val('');
             $(textarea).siblings().find('.counter').text('140');
+            $('#errors').empty();
          }
        });
      }

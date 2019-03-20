@@ -18,7 +18,7 @@
   margin-right: 1em;
 }
 
-.new-tweet form span {
+.counter {
   float: right;
 }
 
@@ -31,4 +31,9 @@
 
 .over {
   color: red;
+}
+
+#errors {
+  color: red;
+  margin-left: 1em;
 }
