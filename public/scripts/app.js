@@ -8,14 +8,7 @@
    let slide = true;
    $("#compose").on('click', function() {
      let container = $('.new-tweet');
-     if (slide) {
-       container.slideUp();
-       slide = false;
-     } else {
-       container.slideDown();
-       $('.new-tweet form textarea').focus();
-       slide = true;
-     }
+     container.slideToggle();
      return false;
     });
 
