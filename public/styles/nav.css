@@ -22,3 +22,18 @@
   font-size: 2em;
   line-height: 80px;
 }
+
+#nav-bar button {
+  float: right;
+  border-radius: 10px;
+  border-color: black;
+  margin-top: 1em;
+  height: 3em;
+  background-color: #B3F0E6;
+  color: #00a087;
+}
+
+#nav-bar button:hover {
+  background-color: #FFFFFF;
+  color: black;
+}

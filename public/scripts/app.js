@@ -69,7 +69,7 @@
    function renderTweets (tweetData) {
      tweetData.forEach(function(user) {
        let $tweet = createTweetElement(user);
-       $('.tweets').append($tweet);
+       $('.tweets').prepend($tweet);
      })
    }
 
