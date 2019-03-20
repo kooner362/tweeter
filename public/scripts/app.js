@@ -10,7 +10,7 @@
      event.preventDefault();
      let data = $(this).serialize();
      let textarea = $(this).find('textarea');
-     let message_len = textarea[0].value.length;
+     let message_len = textarea.val().length;
      if (message_len >= 140) {
        alert('Your tweet is too long!');
      } else if (message_len == 0) {
@@ -22,9 +22,11 @@
         data: data,
         dataType: "text",
         success: function(resultData){
-            console.log('Done!');
-        }
-        });
+            renderTweets([JSON.parse(resultData)]);
+            textarea.val('');
+            $(textarea).siblings().find('.counter').text('140');
+         }
+       });
      }
     });
 
