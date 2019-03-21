@@ -6,9 +6,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["Screenshot of Landing page"]()
-!["Screenshot when Compose button is clicked"]()
-!["Screenshot of Tweet likes"]()
+!["Screenshot of Landing page"](https://github.com/kooner362/tweeter/raw/master/docs/compose.png)
+!["Screenshot when Compose button is clicked"](https://github.com/kooner362/tweeter/raw/master/docs/initial.png)
+!["Screenshot of Tweet likes"](https://github.com/kooner362/tweeter/raw/master/docs/likes.png)
 
 ## Getting Started
 
