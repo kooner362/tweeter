@@ -5,7 +5,6 @@
  */
 
  $(document).ready(function() {
-   let slide = true;
    let error_messages = $('#errors');
    $('.new-tweet').hide();
    $('#errors').hide();
@@ -17,7 +16,7 @@
      return false;
     });
 
-   $(".new-tweet form").on('submit', function(event){
+   $(".new-tweet form").on('submit', function(event) {
      event.preventDefault();
      error_messages.hide();
      let data = $(this).serialize();
@@ -51,8 +50,14 @@
     });
    }
 
+   /**
+    * Returns an array of seconds, minutes, hours, days depending 
+    * on which one is appropriate.
+    *  
+    * @param {*Date in milliseconds} tweetDate 
+    */
    function getDays (tweetDate) {
-     let day = 86400000;
+     let day = 86400000; //num milliseconds in 24 hours
      let hour_in_ms = 86400000 / 24;
      let mins_in_ms = hour_in_ms / 60;
      let secs_in_ms = mins_in_ms / 60;
@@ -77,21 +82,26 @@
    function createTweetElement (tweetData) {
      let $article = $("<article></article").addClass('tweet');
 
+     //Create header dynamically for a tweet
      let $header = $("<header></header");
      $header.append($(`<img src="${tweetData.user.avatars.small}">`));
      $header.append($(`<h2>${tweetData.user.name}</h2>`));
      $header.append($(`<p>${tweetData.user.handle}</p>`));
      $article.append($header);
      let $text = $("<p></p>").text(`${tweetData.content.text}`);
+
+     //creats the text of the tweet
      $article.append($text);
 
+     //creates the footer of the tweet
      let $footer = $("<footer></footer>");
      let time = getDays(tweetData.created_at);
      $footer.append(`<span class="age">${time[0]} ${time[1]}</span>`);
      let $footer_div = $("<div></div>");
      $footer_div.append('<i class="fas fa-flag"></i>');
      $footer_div.append('<i class="fas fa-retweet"></i>');
-     let $like_button = $('<button class="fas fa-heart"></button>').text(tweetData.content.likes);
+     let $like_button = $('<i class="fas fa-heart"></i>').text(tweetData.content.likes);
+     //Click handler for likes
      $like_button.on('click', function(){
        let count = Number($(this).text());
        $.post('/tweets/likes', {id: tweetData._id})
