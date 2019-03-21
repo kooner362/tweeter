@@ -52,9 +52,25 @@
 
    function getDays (tweetDate) {
      let day = 86400000;
+     let hour_in_ms = 86400000 / 24;
+     let mins_in_ms = hour_in_ms / 60;
+     let secs_in_ms = mins_in_ms / 60;
      let today = new Date().getTime();
-     let days = Math.floor((today - tweetDate) / day);
-     return days;
+     let time_diff = today - tweetDate;
+     let time = Math.floor(time_diff / day);
+     let format = 'days ago';
+
+     if (time_diff < mins_in_ms) {
+       time = Math.floor(time_diff / secs_in_ms);
+       format = 'seconds ago';
+     } else if (time_diff < hour_in_ms) {
+       time = Math.floor(time_diff / mins_in_ms);
+       format = 'mins ago';
+     } else if (time_diff < day) {
+       time = Math.floor(time_diff / hour_in_ms);
+       format = 'hours ago';
+     }
+     return [time, format];
    }
 
    function createTweetElement (tweetData) {
@@ -69,7 +85,8 @@
      $article.append($text);
 
      let $footer = $("<footer></footer>");
-     $footer.append(`<span class="age">${getDays(tweetData.created_at)} days ago</span>`);
+     let time = getDays(tweetData.created_at);
+     $footer.append(`<span class="age">${time[0]} ${time[1]}</span>`);
      let $footer_div = $("<div></div>");
      $footer_div.append('<i class="fas fa-flag"></i>');
      $footer_div.append('<i class="fas fa-retweet"></i>');
