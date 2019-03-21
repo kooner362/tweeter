@@ -89,12 +89,15 @@
      let time = getDays(tweetData.created_at);
      $footer.append(`<span class="age">${time[0]} ${time[1]}</span>`);
      let $footer_div = $("<div></div>");
-     $footer_div.append('<i class="fas fa-flag">0</i>');
-     $footer_div.append('<i class="fas fa-retweet">0</i>');
-     let $like_button = $('<button class="fas fa-heart">0</button>');
+     $footer_div.append('<i class="fas fa-flag"></i>');
+     $footer_div.append('<i class="fas fa-retweet"></i>');
+     let $like_button = $('<button class="fas fa-heart"></button>').text(tweetData.content.likes);
      $like_button.on('click', function(){
        let count = Number($(this).text());
-       $(this).text(count + 1);
+       $.post('/tweets/likes', {id: tweetData._id})
+       .done(function(data) {
+        $like_button.text(count + 1);
+       })
      });
      $footer_div.append($like_button);
      $footer.append($footer_div);
