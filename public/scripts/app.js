@@ -6,6 +6,8 @@
 
  $(document).ready(function() {
    let slide = true;
+   let error_messages = $('#errors');
+   $('.new-tweet').hide();
    $('#errors').hide();
    $("#compose").on('click', function() {
      let container = $('.new-tweet');
@@ -16,16 +18,16 @@
 
    $(".new-tweet form").on('submit', function(event){
      event.preventDefault();
-     $('#errors').hide();
+     error_messages.hide();
      let data = $(this).serialize();
      let textarea = $(this).find('textarea');
      let message_len = textarea.val().length;
      if (message_len >= 140) {
-       $('#errors').text('Your message is too long!');
-       $('#errors').slideDown();
+       text('Your message is too long!');
+       error_messages.slideDown();
      } else if (message_len === 0) {
-       $('#errors').text('Your tweet is empty!');
-       $('#errors').slideDown();
+       error_messages.text('Your tweet is empty!');
+       error_messages.slideDown();
      } else {
        $.ajax({
         type: "POST",
