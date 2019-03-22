@@ -23,7 +23,7 @@
      let textarea = $(this).find('textarea');
      let message_len = textarea.val().length;
      if (message_len >= 140) {
-       text('Your message is too long!');
+       error_messages.text('Your message is too long!');
        error_messages.slideDown();
      } else if (message_len === 0) {
        error_messages.text('Your tweet is empty!');
@@ -130,7 +130,7 @@
      tweetData.forEach(function(user) {
        let $tweet = createTweetElement(user);
        $('.tweets').prepend($tweet);
-     })
+     });
    }
 
    loadTweets();
