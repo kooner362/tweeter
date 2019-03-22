@@ -51,7 +51,8 @@ module.exports = function(DataHelpers) {
     }
 
     const id = req.body.id;
-    DataHelpers.updateLikes(id, (err) => {
+    const incr = req.body.incr;
+    DataHelpers.updateLikes(id, incr, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {

@@ -101,13 +101,24 @@
      $footer_div.append('<i class="fas fa-flag"></i>');
      $footer_div.append('<i class="fas fa-retweet"></i>');
      let $like_button = $('<i class="fas fa-heart"></i>').text(tweetData.content.likes);
+     $like_button.attr('clicked', false);
      //Click handler for likes
      $like_button.on('click', function(){
        let count = Number($(this).text());
-       $.post('/tweets/likes', {id: tweetData._id})
-       .done(function(data) {
-        $like_button.text(count + 1);
-       })
+       if ($like_button.attr('clicked') === 'false') {
+        $like_button.attr('clicked', true);
+        $.post('/tweets/likes', {id: tweetData._id, incr: false})
+        .done(function(data) {
+         $like_button.text(count + 1);
+        });
+       } else {
+        $like_button.attr('clicked', false);
+        $.post('/tweets/likes', {id: tweetData._id, incr: true})
+        .done(function(data) {
+         $like_button.text(count - 1);
+        });
+       }
+       
      });
      $footer_div.append($like_button);
      $footer.append($footer_div);

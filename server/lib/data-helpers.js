@@ -8,12 +8,20 @@ var ObjectId = require('mongodb').ObjectId;
 module.exports = function makeDataHelpers(db) {
   return {
     // Updates a tweets likes to `db`
-    updateLikes: function(id, callback) {
+    updateLikes: function(id, incr, callback) {
       let new_id = new ObjectId(id);
-      db.collection("tweets").findOneAndUpdate({"_id": new_id}, {$inc:{'content.likes': 1}})
-      .then(function(data){
-        callback(null, true);
-      })
+      if (incr === 'false') {
+        db.collection("tweets").findOneAndUpdate({"_id": new_id}, {$inc:{'content.likes': 1}})
+        .then(function(data){
+          callback(null, true);
+        })
+      } else {
+        db.collection("tweets").findOneAndUpdate({"_id": new_id}, {$inc:{'content.likes': -1}})
+        .then(function(data){
+          callback(null, true);
+        })
+      }
+    
     },
 
     // Saves a tweet to `db`
