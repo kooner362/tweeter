@@ -22,7 +22,7 @@
      let data = $(this).serialize();
      let textarea = $(this).find('textarea');
      let message_len = textarea.val().length;
-     if (message_len >= 140) {
+     if (message_len > 140) {
        error_messages.text('Your message is too long!');
        error_messages.slideDown();
      } else if (message_len === 0) {
@@ -88,7 +88,7 @@
      $header.append($(`<h2>${tweetData.user.name}</h2>`));
      $header.append($(`<p>${tweetData.user.handle}</p>`));
      $article.append($header);
-     let $text = $("<p></p>").text(`${tweetData.content.text}`);
+     let $text = $("<div></div>").text(`${tweetData.content.text}`);
 
      //creats the text of the tweet
      $article.append($text);

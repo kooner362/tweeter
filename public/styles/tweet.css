@@ -12,8 +12,8 @@ article.tweet header {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-color: #eee;
-  overflow: hidden;
   opacity: 0.5;
+  overflow: hidden;
 }
 
 article.tweet header img {
@@ -33,12 +33,6 @@ article.tweet header p {
   float: right;
   margin: 0 .5em 0 0;
   line-height: 40px;
-}
-
-article.tweet > p {
-  float: left;
-  padding-left: 0.5em;
-  margin-top: 1em;
 }
 
 article.tweet footer {
@@ -77,4 +71,10 @@ i {
   margin-right: .25em;
   outline:none;
   border: none;
+}
+
+article.tweet > div {
+  padding-left: 1em;
+  padding-right: 1em;
+  overflow-wrap: break-word;
 }
